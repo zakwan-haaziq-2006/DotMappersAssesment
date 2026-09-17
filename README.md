@@ -33,7 +33,7 @@ CSV --> SQLite (queryable store)
 - **SQLite over a pandas agent.** Letting an LLM write SQL against a fixed schema is more predictable and auditable than letting it generate arbitrary pandas code. SQL is also easy to validate/sandbox (see safety checks below).
 - **Rule-based anomaly detection, not ML.** With 500 rows and a 48-hour window, a trained model would be unjustifiable and hard to explain. Two clear, threshold-based rules cover the requirement and are fully explainable.
 - **Percentile-based threshold instead of mean + 2×stddev.** Initial EDA showed resolution times have a std of 5.79 against a max of 19.9 hours — a mean+2×stddev threshold (21.7) would never trigger. Switched to a 90th-percentile cutoff per category instead, which reliably flags real outliers.
-- **LangChain + Groq (Llama 3.1 8B Instant).** Free, fast, reliable for SQL generation and short-answer phrasing. A separate, larger model (Llama 3.3 70B) is used only for structured output, since 8B was unreliable at tool-calling for that specific task.
+- **LangChain + Groq (openai/gpt-oss-120b).** Free, fast, reliable for SQL generation and short-answer phrasing.
 - **Keyword-based question routing.** Questions containing anomaly-related terms ("anomaly," "unusual," "flagged," etc.) are routed to the anomaly-summary path instead of SQL generation, since "anomaly" isn't a real column the LLM could query.
 ## Anomaly rules
  
