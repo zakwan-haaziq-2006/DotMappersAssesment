@@ -1,0 +1,20 @@
+# secrets
+.env
+ 
+# generated db
+tickets.db
+ 
+# python
+__pycache__/
+*.pyc
+venv/
+env/
+*.egg-info/
+ 
+# streamlit
+.streamlit/
+ 
+# os junk
+.DS_Store
+Thumbs.db
+ 
